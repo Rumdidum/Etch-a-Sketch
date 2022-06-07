@@ -1,0 +1,36 @@
+/* https: //material.io/resources/color/#!/?view.left=0&view.right=1&secondary.color=acbec4&primary.color=33637a */
+:root {
+    
+}
+html {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: center; */
+    text-align: center;
+    background-color: #00394e;
+    /* background-image: linear-gradient(-20deg, #616161 0%, #9bc5c3 100%); */
+
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+
+}
+footer p {
+    padding: 2px;
+}
+#github {
+    height: 20px;
+}
