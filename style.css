@@ -34,37 +34,37 @@ main {
 }
 .container {
     /* border: red solid; */
-    width: 80%;
+    width: 60%;
     height: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 #settings {
+    padding: 20px 20px 20px 20px;
     color: black;
     align-self: center;
-    height: 800px;
+    height: calc(800px - 40px);
     width: 300px;
-    /* background-color: white; */
+    border: white 1px solid;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 60px;
+    gap: 45px;
 }
 button {
     border-radius: 0px;
     padding: 20px;
     font-size: 20px;
 }
-input {
-    border: none;
-    background-color: var(--secgray-bg-color);
-    /* padding: 0px; */
-    height: 400px;
-    width: 200px;
+input {  
+    align-self: center;
 }
 .color {
-    align-self: center;
+    border: none;
+    height: 200px;
+    width: 200px;
+    padding: 0px;
 }
 #canvas {
     display: flex;
