@@ -67,11 +67,11 @@ input {
     padding: 0px;
 }
 #canvas {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
     height: 800px;
-    width: 800px;
+    min-width: 800px;
     background-color: white;
 }
 #space {
