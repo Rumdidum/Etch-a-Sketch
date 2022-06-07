@@ -1,6 +1,6 @@
 /* https: //material.io/resources/color/#!/?view.left=0&view.right=1&secondary.color=acbec4&primary.color=33637a */
 :root {
-    
+    --main-bg-color: #00394e;
 }
 html {
     font-family: 'Roboto', sans-serif;
@@ -14,10 +14,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* align-items: center; */
     text-align: center;
-    background-color: #00394e;
-    /* background-image: linear-gradient(-20deg, #616161 0%, #9bc5c3 100%); */
+    background-color: var(--main-bg-color);
 
 }
 
@@ -29,7 +27,7 @@ footer {
 
 }
 footer p {
-    padding: 2px;
+    padding-right: 8px;
 }
 #github {
     height: 20px;
