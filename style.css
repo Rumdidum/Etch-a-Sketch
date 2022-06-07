@@ -1,10 +1,14 @@
 /* https: //material.io/resources/color/#!/?view.left=0&view.right=1&secondary.color=acbec4&primary.color=33637a */
 :root {
+    --header-bg-color: #33637a;
     --main-bg-color: #00394e;
+    --footer-bg-color: #6291a9;
+    --secgray-bg-color: #acbec4;
 }
 html {
     font-family: 'Roboto', sans-serif;
     color: white;
+    color: rgb(255, 255, 255)
 }
 
 body {
@@ -18,12 +22,68 @@ body {
     background-color: var(--main-bg-color);
 
 }
-
-footer {
+h1 {
+    font-size: 40px;
+}
+main {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.container {
+    /* border: red solid; */
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#settings {
+    color: black;
+    align-self: center;
+    height: 800px;
+    width: 300px;
+    /* background-color: white; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 60px;
+}
+button {
+    border-radius: 0px;
+    padding: 20px;
+    font-size: 20px;
+}
+input {
+    border: none;
+    background-color: var(--secgray-bg-color);
+    /* padding: 0px; */
+    height: 400px;
+    width: 200px;
+}
+.color {
+    align-self: center;
+}
+#canvas {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 10px;
+    height: 800px;
+    width: 800px;
+    background-color: white;
+}
+#space {
+    height: 800px;
+    width: 300px;
+}
+footer {
+    background-color: var(--footer-bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
 
 }
 footer p {
