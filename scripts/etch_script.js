@@ -4,6 +4,9 @@ let output = document.querySelector('#output');
 let value = input.getAttribute('value');
 let newValue;
 
+function draw() {
+}
+
 function checkTextInput() {
     output.addEventListener('keypress', logKey);
 
