@@ -60,6 +60,14 @@ button {
 input {  
     align-self: center;
 }
+output {
+    font-size: 20px;
+    color: white;
+    background-color: var(--footer-bg-color);
+    padding: 5px;
+    align-self: center;
+    border-radius: 5px;
+}
 .color {
     border: none;
     height: 200px;
@@ -67,13 +75,26 @@ input {
     padding: 0px;
 }
 #canvas {
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
+    display: flex;
     height: 800px;
     min-width: 800px;
     background-color: white;
 }
+#canvas .item0 {
+    display: flex;
+    flex-direction: column;
+    /* background: rgba(0, 255, 106, 0.5); */
+    /* width: 100%; */
+    border: 1px solid green;
+    flex-basis: 100%;
+
+}
+#canvas .item1 {
+    flex-basis: 100%;
+    /* height: 100%; */
+    box-shadow: 0 0 0 1px gray;
+}
+
 #space {
     height: 800px;
     width: 300px;
