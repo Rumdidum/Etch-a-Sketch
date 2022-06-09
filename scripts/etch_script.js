@@ -1,10 +1,16 @@
-let div = document.querySelector('#canvas');
+let div = document.querySelector('#drawArea');
 let input = document.querySelector('input');
 let output = document.querySelector('#output');
 let value = input.getAttribute('value');
 let newValue;
 let drawItem = document.querySelectorAll('.item1');
+let clearBtn = document.querySelector('.clear');
+let eraseBtn = document.querySelector('.erase');
 
+
+function makeWhite(input) {
+    return input.style.backgroundColor = "white";
+}
 // drawItem1.style.backgroundColor = "black";
 /* drawItem.addEventListener("click", () => {
     console.log(drawItem.className);});
@@ -15,6 +21,9 @@ drawItem.forEach((button) => {
         console.log(button.className);
     })
 }) */
+function makeClear(event) {
+    clearBtn.addEventListener('click', () => { makeWhite(event) });
+}
 function checkTextInput() {
     function logKey(e) {
         if (e.key === "Enter") {
@@ -42,7 +51,7 @@ checkTextInput()
 
 
 input.addEventListener('input', () => {
-    //  This one is important to delete old squares
+    //  This one is important to delete old firstLoop
     div.innerHTML = ''
     //   
 
@@ -51,38 +60,32 @@ input.addEventListener('input', () => {
     newValue = input.value;
     input.setAttribute("value", newValue);
     drawRectangles(newValue);
-}, true);
+});
 
 function drawRectangles(newV = value) {
     for (let i = 0; i < newV; i++) {
-        let squares = document.createElement('div');
-        squares.classList.add('item0');
+        let firstLoop = document.createElement('div');
+        firstLoop.classList.add('item0');
         //      These should be empty containers
-        div.appendChild(squares);
+        div.appendChild(firstLoop);
         for (let j = 0; j < newV; j++) {
             let secondLoop = document.createElement('div');
             secondLoop.classList.add('item1');
-            secondLoop.textContent = `${j}`
-            // secondLoop.style.backgroundColor = "white";
+            firstLoop.appendChild(secondLoop);
+
+            // 
             secondLoop.addEventListener('mousemove', (e) => {
                 secondLoop.style.backgroundColor = "black";
-                e.preventDefault();
-                console.log(e);
-
             })
-            squares.appendChild(secondLoop);
-            
+            makeClear(secondLoop);
         };
-
     };
 }
 
-
-// squaresInMemory.style.backgroundColor = "black";
 drawRectangles();
 // TODO erstelle eine einfache Zeichnung mit mehreren divs in einem Container und versuche ihre Größe nach dem Container anzupassen.
 // TODO Ich sollte auch eine Zahl mit der Hand eingeben können
 // TODO Ich sollte vorherig erstelle DiVs löschen
-// TODO Größe der Squares bei einer höheren Zahl kleiner werden lassen
+// TODO Größe der firstLoop bei einer höheren Zahl kleiner werden lassen
 // und an die größe des Containers anpassen. (vieleicht geht das ja auch mit Flexbox)
 // Ich denke mit height und width komme ich nicht weiter da sie flexbox aushebeln und ich somit 
