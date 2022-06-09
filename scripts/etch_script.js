@@ -3,13 +3,19 @@ let input = document.querySelector('input');
 let output = document.querySelector('#output');
 let value = input.getAttribute('value');
 let newValue;
+let drawItem = document.querySelectorAll('.item1');
 
-function draw() {
-}
+// drawItem1.style.backgroundColor = "black";
+/* drawItem.addEventListener("click", () => {
+    console.log(drawItem.className);});
 
+
+drawItem.forEach((button) => {
+    button.addEventListener("click", () => {
+        console.log(button.className);
+    })
+}) */
 function checkTextInput() {
-    output.addEventListener('keypress', logKey);
-
     function logKey(e) {
         if (e.key === "Enter") {
             
@@ -56,10 +62,23 @@ function drawRectangles(newV = value) {
         for (let j = 0; j < newV; j++) {
             let secondLoop = document.createElement('div');
             secondLoop.classList.add('item1');
+            secondLoop.textContent = `${j}`
+            // secondLoop.style.backgroundColor = "white";
+            secondLoop.addEventListener('mousemove', (e) => {
+                secondLoop.style.backgroundColor = "black";
+                e.preventDefault();
+                console.log(e);
+
+            })
             squares.appendChild(secondLoop);
+            
         };
+
     };
 }
+
+
+// squaresInMemory.style.backgroundColor = "black";
 drawRectangles();
 // TODO erstelle eine einfache Zeichnung mit mehreren divs in einem Container und versuche ihre Größe nach dem Container anzupassen.
 // TODO Ich sollte auch eine Zahl mit der Hand eingeben können
