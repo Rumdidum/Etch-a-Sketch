@@ -9,7 +9,9 @@ let eraseBtn = document.querySelector('.erase');
 
 
 function makeWhite(input) {
-    return input.style.backgroundColor = "white";
+    input.style.backgroundColor = "white";
+}
+function eraseWhite(input) {
 }
 // drawItem1.style.backgroundColor = "black";
 /* drawItem.addEventListener("click", () => {
@@ -24,7 +26,9 @@ drawItem.forEach((button) => {
 function makeClear(event) {
     clearBtn.addEventListener('click', () => { makeWhite(event) });
 }
+
 function checkTextInput() {
+    output.addEventListener('keypress', logKey);
     function logKey(e) {
         if (e.key === "Enter") {
             
@@ -78,6 +82,11 @@ function drawRectangles(newV = value) {
                 secondLoop.style.backgroundColor = "black";
             })
             makeClear(secondLoop);
+            eraseBtn.addEventListener('click', () => {
+                secondLoop.addEventListener('mousemove', () => {
+                    secondLoop.style.backgroundColor = "white";
+                })
+            })
         };
     };
 }
