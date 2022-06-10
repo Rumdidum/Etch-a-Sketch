@@ -15,8 +15,9 @@ drawRectangles();
 let drawItem = document.querySelectorAll('.item1'); 
 
 function checkTextInput() {
-    output.addEventListener('keypress', logKey);
-    function logKey(e) {
+    // 
+    output.addEventListener('keypress', inputTextNum);
+    function inputTextNum(e) {
         if (e.key === "Enter") {
 
             newValue = output.value;
