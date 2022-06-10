@@ -9,25 +9,17 @@ let eraseBtn = document.querySelector('.erase');
 let colorBtn = document.querySelector('.colorBtn');
 let selColor = document.querySelector("#colorpicker");
 let selectRainbow = document.querySelector(".rainbow");
+
 drawRectangles();
-
-
-let drawItem = document.querySelectorAll('.item1'); // This Variable should be under "DrawRectangles" 
-
-function makeWhite(input) {
-    input.style.backgroundColor = "white";
-}
-
-function clearGrid(event) {
-    clearBtn.addEventListener('click', () => { makeWhite(event) });
-}
+// This Variable should be under "DrawRectangles" because it gets items under runtime
+let drawItem = document.querySelectorAll('.item1'); 
 
 function checkTextInput() {
     output.addEventListener('keypress', logKey);
     function logKey(e) {
         if (e.key === "Enter") {
-            
-            newValue = output.myValue;
+
+            newValue = output.value;
             input.setAttribute("value", newValue);
             div.innerHTML = ''
             if (parseInt(newValue) <= 64 && typeof parseInt(newValue) === 'number' && parseInt(newValue) >= 16) {
@@ -40,24 +32,25 @@ function checkTextInput() {
                 alert("Number is to low!")
                 drawRectangles();
             }
-                
+
         } else {
             return
         }
     }
 }
-checkTextInput()
-
-
+checkTextInput();
 input.addEventListener('input', () => {
     //  This one is important to delete old firstLoop
-    div.innerHTML = ''
-    // updates output myValue
-    output.myValue = input.myValue;
-    newValue = input.myValue;
+    div.innerHTML = '';
+    //   
+
+    // updates output value
+    output.value = input.value;
+    newValue = input.value;
     input.setAttribute("value", newValue);
     drawRectangles(newValue);
 });
+
 
 function drawRectangles(newV = myValue) {
     for (let i = 0; i < newV; i++) {
@@ -68,48 +61,67 @@ function drawRectangles(newV = myValue) {
         for (let j = 0; j < newV; j++) {
             let secondLoop = document.createElement('div');
             secondLoop.classList.add('item1');
-            firstLoop.appendChild(secondLoop);
-            
-            // 
-            // secondLoop.addEventListener('mousemove', (e) => {
-            //     secondLoop.style.backgroundColor = "black";
-            // })
-            clearGrid(secondLoop);
-            eraseBtn.addEventListener('click', () => {
-                secondLoop.addEventListener('mousemove', () => {
-                    secondLoop.style.backgroundColor = "white";
-                })
-            })
+            firstLoop.appendChild(secondLoop);            
         };
     };
 }
+
 function randomNum() {
-    return Math.floor(255 * Math.random());
+    let min = 80;
+    let max = 255;
+    return Math.floor(Math.random() * (max -min)) + min;
+}
+function clearGrid(input = drawItem) {
+    makeWhite(input);
+    removeListener(input);
+}
+function eraseSquare(input) {
+    input.forEach((item) => {
+        item.addEventListener('mouseenter', () => {
+            item.style.backgroundColor = "white";
+        })
+    })
+}
+
+function removeListener(input) {
+    input.forEach((item) => {
+        item.removeEventListener('mouseenter', () => {
+            eraseSquare(drawItem);
+            makeRainbow(drawItem);
+        });
+    })
+    
+}
+function makeWhite(input) {
+    // Nodelist needs an iteration 
+    input.forEach((square) => {
+        square.style.backgroundColor = "white";
+    })
 }
 
 
-
 // 
-function makeBlack(selector) {
-    selector.forEach((element) => {
+function makeBlack(input) {
+    input.forEach((element) => {
         element.addEventListener('mouseenter', () => {
             element.style.backgroundColor = "black";
         })   
     })
 } 
-function makeRainbow(selector) {
-    selector.forEach((element) => {
+function makeRainbow(input) {
+    input.forEach((element) => {
         // generates a new random number every mouseover
         element.addEventListener('mouseenter', () => { randomNum() }) 
+        // modifyes backgroundcolor 
         element.addEventListener('mouseenter', (e) => {
-            element.style.backgroundColor = `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`;
+            element.style.backgroundColor = `rgb(${randomNum()}, ${randomNum()}, ${255})`;
         })
     })
 }
-selectRainbow.addEventListener('click', () => {makeRainbow(drawItem)});
-
-// 
-
+clearBtn.addEventListener('click', () => {clearGrid(drawItem)});
+eraseBtn.addEventListener('click', () => {eraseSquare(drawItem)});
+selectRainbow.addEventListener('click', () => { makeRainbow(drawItem) });
+clearBtn.removeEventListener('click', () => {makeRainbow()});
 
 // TODO erstelle eine einfache Zeichnung mit mehreren divs in einem Container und versuche ihre Größe nach dem Container anzupassen.
 // TODO Ich sollte auch eine Zahl mit der Hand eingeben können
