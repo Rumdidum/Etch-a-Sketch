@@ -8,7 +8,7 @@ let clearBtn = document.querySelector('.clear');
 let eraseBtn = document.querySelector('.erase');
 let colorBtn = document.querySelector('.colorBtn');
 let selColor = document.querySelector("#colorpicker");
-let selectRainbow = document.querySelector(".rainbow");
+let rainbowBtn = document.querySelector(".rainbow");
 let drawItem = document.querySelectorAll('.item1'); 
 
 
@@ -44,8 +44,6 @@ function inputRect() {
     input.addEventListener('input', () => {
         //  This one is important to delete old firstLoop
         drawArea.innerHTML = '';
-        //   
-    
         // updates output value
         output.value = input.value;
         newValue = input.value;
@@ -53,7 +51,6 @@ function inputRect() {
         generateRect(newValue);
     });
 }
-
 
 function generateRect(newV = myValue) {
     for (let i = 0; i < newV; i++) {
@@ -75,9 +72,9 @@ function randomNum(min, max) {
     return num
 }
 function clearGrid(input = drawItem) {
-    makeWhite(input);
+    whiteMode(input);
 }
-function eraseSquare(input) {
+function eraseMode(input) {
     input.forEach((item) => {
         item.addEventListener('mouseenter', () => {
             // two different ways
@@ -87,36 +84,27 @@ function eraseSquare(input) {
     })
 }
 
-function removeListener(input) {
-    input.forEach((item) => {
-        item.removeEventListener('mouseenter', () => {
-            // eraseSquare(drawItem);
-            makeRainbow(drawItem);
-        });
-    })
-    
-}
-function makeWhite(input) {
+function whiteMode(input) {
     // Nodelist needs an iteration 
     input.forEach((square) => {
         square.style.backgroundColor = "white";
     })
 }
 
-
 // This function is for testing with black squares
-function makeBlack(input) {
+function blackMode(input) {
     input.forEach((element) => {
         element.addEventListener('mouseenter', () => {
             element.style.backgroundColor = "black";
         })   
     })
 }
+
 function randomColors(element) {
     return element.style.backgroundColor = `rgb(${randomNum(80, 255)}, ${randomNum(40, 255)}, ${randomNum(100, 255)})`
 }
 
-function makeRainbow(input) {
+function rainbowMode(input) {
     input.forEach((element) => {
         // generates a new random number every mouseover
         element.addEventListener('mouseenter', () => { randomNum() }) 
@@ -127,22 +115,16 @@ function makeRainbow(input) {
 function getColor(element) {
     return element.style.backgroundColor = selColor.value;
 }
-function pickedColor() {
+function colorMode() {
     drawItem.forEach((element) => {
         element.addEventListener('mouseenter', () => getColor(element))
     })
 }
 
-eraseBtn.addEventListener('click', () => {eraseSquare(drawItem)});
-selectRainbow.addEventListener('click', () => { makeRainbow(drawItem) });
-clearBtn.addEventListener('click', () => {
-    drawItem.forEach((square) => {
-        square.removeEventListener('mouseenter', randomColors);
-    })
-    clearGrid(drawItem);
-
-})
-colorBtn.addEventListener('click', pickedColor)
+eraseBtn.addEventListener('click', () => {eraseMode(drawItem)});
+rainbowBtn.addEventListener('click', () => { rainbowMode(drawItem) });
+clearBtn.addEventListener('click', () => { clearGrid(drawItem); })
+colorBtn.addEventListener('click', colorMode)
 inputRect();
 generateRect();
 console.log(selColor.value)
