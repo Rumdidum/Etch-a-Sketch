@@ -124,6 +124,14 @@ function makeRainbow(input) {
         element.addEventListener('mouseenter', () => { randomColors(element) })
     })  
 }
+function getColor(element) {
+    return element.style.backgroundColor = selColor.value;
+}
+function pickedColor() {
+    drawItem.forEach((element) => {
+        element.addEventListener('mouseenter', () => getColor(element))
+    })
+}
 
 eraseBtn.addEventListener('click', () => {eraseSquare(drawItem)});
 selectRainbow.addEventListener('click', () => { makeRainbow(drawItem) });
@@ -134,5 +142,7 @@ clearBtn.addEventListener('click', () => {
     clearGrid(drawItem);
 
 })
+colorBtn.addEventListener('click', pickedColor)
 inputRect();
 generateRect();
+console.log(selColor.value)
