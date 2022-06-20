@@ -1,4 +1,4 @@
-let drawArea = document.querySelector('#drawArea');
+let drawingArea = document.querySelector('#drawingArea');
 let input = document.querySelector('input');
 let output = document.querySelector('#output');
 let myValue = input.getAttribute('value');
@@ -7,9 +7,9 @@ let newValue;
 let clearBtn = document.querySelector('.clear');
 let eraseBtn = document.querySelector('.erase');
 let colorBtn = document.querySelector('.colorBtn');
-let selColor = document.querySelector("#colorpicker");
+let colorPicker = document.querySelector("#colorpicker");
 let rainbowBtn = document.querySelector(".rainbow");
-let drawItem = document.querySelectorAll('.item1'); 
+let squareToFill = document.querySelectorAll('.item1'); 
 
 
 
@@ -21,7 +21,7 @@ function checkTextInput() {
 
             newValue = output.value;
             input.setAttribute("value", newValue);
-            drawArea.innerHTML = ''
+            drawingArea.innerHTML = ''
             if (parseInt(newValue) <= 64 && typeof parseInt(newValue) === 'number' && parseInt(newValue) >= 16) {
                 generateRect(newValue);
                 console.log(typeof parseInt(newValue));
@@ -43,7 +43,7 @@ function inputRect() {
     
     input.addEventListener('input', () => {
         //  This one is important to delete old firstLoop
-        drawArea.innerHTML = '';
+        drawingArea.innerHTML = '';
         // updates output value
         output.value = input.value;
         newValue = input.value;
@@ -57,21 +57,21 @@ function generateRect(newV = myValue) {
         let firstLoop = document.createElement('div');
         firstLoop.classList.add('item0');
         //      These should be empty containers
-        drawArea.appendChild(firstLoop);
+        drawingArea.appendChild(firstLoop);
         for (let j = 0; j < newV; j++) {
             let secondLoop = document.createElement('div');
             secondLoop.classList.add('item1');
             firstLoop.appendChild(secondLoop);            
         };
     };
-    drawItem = document.querySelectorAll('.item1');
+    squareToFill = document.querySelectorAll('.item1');
 }
 
 function randomNum(min, max) {
     num = Math.floor(Math.random() * (max - min)) + min;
     return num
 }
-function clearGrid(input = drawItem) {
+function clearGrid(input = squareToFill) {
     whiteMode(input);
 }
 function eraseMode(input) {
@@ -100,7 +100,7 @@ function blackMode(input) {
     })
 }
 
-function randomColors(element) {
+function setRandomColor(element) {
     return element.style.backgroundColor = `rgb(${randomNum(80, 255)}, ${randomNum(40, 255)}, ${randomNum(100, 255)})`
 }
 
@@ -109,22 +109,22 @@ function rainbowMode(input) {
         // generates a new random number every mouseover
         element.addEventListener('mouseenter', () => { randomNum() }) 
         // modifyes backgroundcolor 
-        element.addEventListener('mouseenter', () => { randomColors(element) })
+        element.addEventListener('mouseenter', () => { setRandomColor(element) })
     })  
 }
 function getColor(element) {
-    return element.style.backgroundColor = selColor.value;
+    return element.style.backgroundColor = colorPicker.value;
 }
 function colorMode() {
-    drawItem.forEach((element) => {
+    squareToFill.forEach((element) => {
         element.addEventListener('mouseenter', () => getColor(element))
     })
 }
 
-eraseBtn.addEventListener('click', () => {eraseMode(drawItem)});
-rainbowBtn.addEventListener('click', () => { rainbowMode(drawItem) });
-clearBtn.addEventListener('click', () => { clearGrid(drawItem); })
+eraseBtn.addEventListener('click', () => {eraseMode(squareToFill)});
+rainbowBtn.addEventListener('click', () => { rainbowMode(squareToFill) });
+clearBtn.addEventListener('click', () => { clearGrid(squareToFill); })
 colorBtn.addEventListener('click', colorMode)
 inputRect();
 generateRect();
-console.log(selColor.value)
+console.log(colorPicker.value)
