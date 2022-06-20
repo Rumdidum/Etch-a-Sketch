@@ -10,5 +10,5 @@
 - coming soon
 
 
-[Live App](https://github.com/Rumdidum/Etch-a-Sketch)
+[Live App](https://rumdidum.github.io/Etch-a-Sketch/)
  
