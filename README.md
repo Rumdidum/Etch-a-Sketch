@@ -22,7 +22,10 @@
   generated squares. Unfortunatly in my current condition I' am not able to pass named functions 
   with parameters to "addEventListener('click', namedFunction(parameterNotworking))" without breaking
   the programm.
+  - It is unnecessary to use "removeListener()" as it is better to change listeners as they are always
+    in use generaly.
 - Was forced to learn Flexbox again for the nth time
+
 
 [Live App](https://rumdidum.github.io/Etch-a-Sketch/)
  
