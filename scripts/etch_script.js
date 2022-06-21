@@ -1,3 +1,5 @@
+// Coded by Rumdidum, 21.06.2022
+
 let drawingArea = document.querySelector('#drawingArea');
 let input = document.querySelector('input');
 let textInput = document.querySelector('#textInput');
@@ -67,7 +69,7 @@ function generateRect(newV = myValue) {
     squareToFill = document.querySelectorAll('.item1');
 }
 
-function randomNum(min, max) {
+function setRandomNum(min, max) {
     num = Math.floor(Math.random() * (max - min)) + min;
     return num
 }
@@ -101,13 +103,13 @@ function blackMode(input) {
 }
 
 function setRandomColor(element) {
-    return element.style.backgroundColor = `rgb(${randomNum(80, 255)}, ${randomNum(40, 255)}, ${randomNum(100, 255)})`
+    return element.style.backgroundColor = `rgb(${setRandomNum(80, 255)}, ${setRandomNum(40, 255)}, ${setRandomNum(100, 255)})`
 }
 
 function rainbowMode(input) {
     input.forEach((element) => {
         // generates a new random number every mouseover
-        element.addEventListener('mouseenter', () => { randomNum() }) 
+        element.addEventListener('mouseenter', () => { setRandomNum() }) 
         // modifyes backgroundcolor 
         element.addEventListener('mouseenter', () => { setRandomColor(element) })
     })  
