@@ -60,7 +60,7 @@ button {
 input {  
     align-self: center;
 }
-#output {
+#textInput {
     font-size: 20px;
     color: white;
     background-color: var(--footer-bg-color);
@@ -100,7 +100,7 @@ input {
     flex-direction: column;
     align-items: center;
 }
-#output {
+#textInput {
     width: 40px;
     text-align: center;
 }

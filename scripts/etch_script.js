@@ -1,6 +1,6 @@
 let drawingArea = document.querySelector('#drawingArea');
 let input = document.querySelector('input');
-let output = document.querySelector('#output');
+let textInput = document.querySelector('#textInput');
 let myValue = input.getAttribute('value');
 let newValue;
 
@@ -15,11 +15,11 @@ let squareToFill = document.querySelectorAll('.item1');
 
 function checkTextInput() {
     // 
-    output.addEventListener('keypress', inputTextNum);
+    textInput.addEventListener('keypress', inputTextNum);
     function inputTextNum(e) {
         if (e.key === "Enter") {
 
-            newValue = output.value;
+            newValue = textInput.value;
             input.setAttribute("value", newValue);
             drawingArea.innerHTML = ''
             if (parseInt(newValue) <= 64 && typeof parseInt(newValue) === 'number' && parseInt(newValue) >= 16) {
@@ -44,8 +44,8 @@ function inputRect() {
     input.addEventListener('input', () => {
         //  This one is important to delete old firstLoop
         drawingArea.innerHTML = '';
-        // updates output value
-        output.value = input.value;
+        // updates textInput value
+        textInput.value = input.value;
         newValue = input.value;
         input.setAttribute("value", newValue);
         generateRect(newValue);
